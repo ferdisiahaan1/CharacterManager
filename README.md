@@ -1,16 +1,26 @@
-# Character Manager — TP3 (Java Visual SIH-6406)
 
-Character Manager adalah aplikasi berbasis konsol Java yang dirancang untuk mengelola data karakter game (seperti Warrior, Mage, Archer, dan Healer) dengan menerapkan konsep Object-Oriented Programming (OOP) seperti enkapsulasi, enum, konstruktor ganda, dan validasi data.
 
-# Screenshot Output Terminal
+### Bagian C — Fitur Analitik Rancangan Sendiri
 
-![Screenshot Output](Screenshot 2026-10-16 011802.png)
+Fitur analitik yang saya tambahkan pada class `CharacterManager` adalah method `countByType(String type)`. Method ini berfungsi untuk menghitung jumlah karakter berdasarkan tipe tertentu, seperti Warrior atau Mage.
 
-# Struktur Folder Project
+Cara kerjanya adalah dengan memeriksa setiap karakter yang tersimpan di dalam daftar karakter, kemudian membandingkan tipe karakter tersebut dengan tipe yang dimasukkan oleh pengguna. Jika tipenya sesuai, jumlah penghitung akan bertambah satu. Setelah semua karakter diperiksa, method akan mengembalikan jumlah karakter yang sesuai.
+
+Method ini menerapkan prinsip **encapsulation** karena tidak mengembalikan atau mengekspos `ArrayList` yang digunakan untuk menyimpan karakter. Method hanya mengembalikan nilai berupa bilangan bulat (`int`) yang menunjukkan jumlah karakter berdasarkan tipe tertentu.
+
+Selain itu, method ini dilengkapi dengan **Javadoc** untuk menjelaskan fungsi method, parameter yang digunakan, dan nilai yang dikembalikan. Validasi juga diterapkan agar parameter yang bernilai `null` atau kosong tidak menyebabkan kesalahan saat method dijalankan.
+
+Fitur ini dibuat untuk mempermudah pengguna mengetahui jumlah karakter berdasarkan tipenya tanpa harus menghitungnya secara manual. Dengan demikian, pengelolaan dan analisis data karakter menjadi lebih mudah dan efisien.
+
+## Screenshot Output Terminal
+
+![Screenshot Output](Screenshot 2026-10-17 123023.png)
+
+## Struktur Folder Project
 
 ```text
 AP3_Tugas/
-├── Cuplikan layar 2026-10-16 170515.png
+├── Screenshot 2026-10-17 123023.png
 ├── README.md
 └── src/
     ├── Main.java
@@ -21,7 +31,7 @@ AP3_Tugas/
                     ├── Character.java
                     └── CharacterType.java
 
-Nama    : Ferdi Wilson Herwansyah Siahaan
+Nama    : Ferdi Wiilson Herwansyah Siahaan
 Nim     : (253303621227)
 Kelas   : Semester 3 Pagi A
-Link Google Docs :https://docs.google.com/document/d/1TIepGYueLajufE1d6eJrBnakSjIpnn7UQcdY5GCmepg/edit?usp=sharing
+Link Google Docs : https://docs.google.com/document/d/1Ls2wEBf2bbFOz8kGk8F0vxAIeZu338B4U5bW4jEk6J0/edit?usp=sharing
