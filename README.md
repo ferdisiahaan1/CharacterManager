@@ -1,37 +1,16 @@
+## TP8 - Java GUI & Swing Implementation
 
+### 1. Screenshot Aplikasi
+*(Sertakan 2 screenshot)*
+- **Kondisi Awal (Misal 3-4 Karakter):** ![Screenshot 1] 2026-10-21 183509.png
+- **Kondisi Akhir (5 Karakter + Statistik):** ![Screenshot 2] 2026-10-21 225346.png
 
-### Bagian C — Fitur Analitik Rancangan Sendiri
+### 2. Aliran Data (MVC Architecture)
+Aplikasi dimulai dari `Main` yang menginstansiasi model data dan mendaftarkannya ke `CharacterManager` (Controller). `CharacterManager` mengelola daftar objek `Character` (Model) dalam memori. Selanjutnya, `Main` mengirimkan lis data karakter dari `CharacterManager` ke `MainWindow` (View) untuk dirender secara dinamis pada komponen GUI Swing.
 
-Fitur analitik yang saya tambahkan pada class `CharacterManager` adalah method `countByType(String type)`. Method ini berfungsi untuk menghitung jumlah karakter berdasarkan tipe tertentu, seperti Warrior atau Mage.
+### 3. Daftar Karakter Baru
+- **Healer (Support, Level 8):** Ditambahkan sebagai karakter pendukung kelompok untuk menyeimbangkan variasi tipe *role*.
+- **Assassin (DPS, Level 20):** Ditambahkan sebagai karakter tingkat lanjut dengan level tinggi untuk menguji kalkulasi rata-rata statistik level secara dinamis.
 
-Cara kerjanya adalah dengan memeriksa setiap karakter yang tersimpan di dalam daftar karakter, kemudian membandingkan tipe karakter tersebut dengan tipe yang dimasukkan oleh pengguna. Jika tipenya sesuai, jumlah penghitung akan bertambah satu. Setelah semua karakter diperiksa, method akan mengembalikan jumlah karakter yang sesuai.
-
-Method ini menerapkan prinsip **encapsulation** karena tidak mengembalikan atau mengekspos `ArrayList` yang digunakan untuk menyimpan karakter. Method hanya mengembalikan nilai berupa bilangan bulat (`int`) yang menunjukkan jumlah karakter berdasarkan tipe tertentu.
-
-Selain itu, method ini dilengkapi dengan **Javadoc** untuk menjelaskan fungsi method, parameter yang digunakan, dan nilai yang dikembalikan. Validasi juga diterapkan agar parameter yang bernilai `null` atau kosong tidak menyebabkan kesalahan saat method dijalankan.
-
-Fitur ini dibuat untuk mempermudah pengguna mengetahui jumlah karakter berdasarkan tipenya tanpa harus menghitungnya secara manual. Dengan demikian, pengelolaan dan analisis data karakter menjadi lebih mudah dan efisien.
-
-## Screenshot Output Terminal
-
-![Screenshot Output](Screenshot 2026-10-17 123023.png)
-
-## Struktur Folder Project
-
-```text
-AP3_Tugas/
-├── Screenshot 2026-10-17 123023.png
-├── README.md
-└── src/
-    ├── Main.java
-    └── com/
-        └── unpri/
-            └── charactermanager/
-                └── model/
-                    ├── Character.java
-                    └── CharacterType.java
-
-Nama    : Ferdi Wiilson Herwansyah Siahaan
-Nim     : (253303621227)
-Kelas   : Semester 3 Pagi A
-Link Google Docs : https://docs.google.com/document/d/1Ls2wEBf2bbFOz8kGk8F0vxAIeZu338B4U5bW4jEk6J0/edit?usp=sharing
+### 4. Link Dokumen Analisis
+- **Google Docs (Bagian D):** [https://docs.google.com/document/d/1R8hEdzEWIp-hdSuWt-zfDFaU5eCxSOcYys6hgIvu8Nk/edit?usp=sharing]
