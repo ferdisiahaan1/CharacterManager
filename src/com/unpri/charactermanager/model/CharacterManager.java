@@ -2,58 +2,63 @@ package com.unpri.charactermanager.model;
 
 import java.util.ArrayList;
 
-/**
- * Mengelola koleksi Character: tambah, cari, hapus, dan statistik dasar.
- * Menerapkan Composition: CharacterManager "has-a" ArrayList<Character>.
- */
 public class CharacterManager {
 
-    private ArrayList<Character> characterList;
+    public static final int MAX_CHARACTERS = 20;
+
+    private final ArrayList<Character> characterList;
 
     public CharacterManager() {
-        this.characterList = new ArrayList<>();   
+        this.characterList = new ArrayList<>();
     }
 
-    /**
-     * Menambahkan karakter baru ke dalam list.
-     * Menolak jika sudah ada karakter dengan nama yang sama (cek via equals()).
-     * @return true jika berhasil ditambahkan, false jika ditolak karena duplikat
-     */
-    public boolean addCharacter(Character character) {
-        if (findByName(character.getName()) != null) {   
-            System.out.println("❌ Gagal: karakter dengan nama '" + character.getName() + "' sudah ada!");
+    public boolean isNameTaken(String name) {
+        if (name == null) {
             return false;
         }
+        String normalized = name.trim();
+        for (Character c : characterList) {
+            if (c.getName().equalsIgnoreCase(normalized)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addCharacter(Character character) {
+        if (character == null) {
+            throw new IllegalArgumentException("Objek karakter tidak boleh null.");
+        }
+        if (characterList.size() >= MAX_CHARACTERS) {
+            throw new IllegalArgumentException(
+                    "Kapasitas daftar penuh (maksimal " + MAX_CHARACTERS + " karakter).");
+        }
+        if (isNameTaken(character.getName())) {
+            throw new IllegalArgumentException(
+                    "Nama karakter '" + character.getName() + "' sudah digunakan.");
+        }
         characterList.add(character);
-        System.out.println("✅ Karakter '" + character.getName() + "' berhasil ditambahkan.");
         return true;
     }
 
-    /**
-     * Mencari karakter berdasarkan nama.
-     * @return object Character jika ditemukan, null jika tidak ada
-     */
     public Character findByName(String name) {
-        for (Character c : characterList) {         
-            if (c.getName().equals(name)) {          
-                return c;                             
+        if (name == null) {
+            return null;
+        }
+        for (Character c : characterList) {
+            if (c.getName().equalsIgnoreCase(name.trim())) {
+                return c;
             }
         }
-        return null;                                  
+        return null;
     }
 
-    /**
-     * Menghapus karakter dari list berdasarkan nama.
-     * @return true jika berhasil dihapus, false jika tidak ditemukan
-     */
     public boolean removeCharacter(String name) {
         Character target = findByName(name);
         if (target == null) {
-            System.out.println("❌ Gagal hapus: karakter '" + name + "' tidak ditemukan.");
             return false;
         }
-        characterList.remove(target);                 
-        System.out.println("🗑️ Karakter '" + name + "' berhasil dihapus.");
+        characterList.remove(target);
         return true;
     }
 
@@ -61,17 +66,10 @@ public class CharacterManager {
         return characterList.size();
     }
 
-    /**
-     * Mengembalikan SALINAN list, bukan referensi asli.
-     */
     public ArrayList<Character> getAllCharacters() {
-        return new ArrayList<>(characterList);        
+        return new ArrayList<>(characterList);
     }
 
-    /**
-     * Menghitung rata-rata level seluruh karakter dalam list.
-     * Mengembalikan 0 jika list kosong.
-     */
     public double getAverageLevel() {
         if (characterList.isEmpty()) {
             return 0.0;
@@ -83,9 +81,6 @@ public class CharacterManager {
         return (double) totalLevel / characterList.size();
     }
 
-    /**
-     * Mengembalikan semua karakter yang memiliki tipe tertentu (misal: WARRIOR).
-     */
     public ArrayList<Character> findByType(CharacterType type) {
         ArrayList<Character> result = new ArrayList<>();
         for (Character c : characterList) {
@@ -96,17 +91,10 @@ public class CharacterManager {
         return result;
     }
 
-    /**
-     * Mencari dan mengembalikan karakter dengan attack power tertinggi dalam list.
-     * Mengembalikan null jika list dalam keadaan kosong.
-     * 
-     * @return object Character dengan attack power tertinggi, atau null jika list kosong
-     */
     public Character findStrongest() {
         if (characterList.isEmpty()) {
             return null;
         }
-
         Character strongest = characterList.get(0);
         for (Character c : characterList) {
             if (c.getAttackPower() > strongest.getAttackPower()) {
@@ -115,5 +103,4 @@ public class CharacterManager {
         }
         return strongest;
     }
-
 }
